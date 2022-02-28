@@ -8,13 +8,15 @@ const {
   deleteGoal,
 } = require("../controller/goalController");
 
-router.route("/").get(getGoals).post(setGoal);
+const { protect } = require("../middleware/authMiddleware");
+
+router.route("/").get(protect, getGoals).post(protect, setGoal);
 
 // replaced by line 10
 // router.get("/", getGoals);
 // router.post("/", setGoal);
 
-router.route("/:id").put(updateGoal).delete(deleteGoal);
+router.route("/:id").put(protect, updateGoal).delete(protect, deleteGoal);
 
 // replaced by line 17
 // :id is the param
