@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // if it hits this /api/goals api it's going to look into ./routes/goalsRoutes file
 app.use("/api/goals", require("./routes/goalRoutes"));
+app.use("/api/users", require("./routes/userRoutes"));
 
 // override default express error handler
 app.use(errorHandler);
